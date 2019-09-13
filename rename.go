@@ -49,7 +49,7 @@ func encode(nameFolder string) error {
 	c := 0
 	for _, file := range files {
 		fmt.Println("Archivo encontrado: ", file.Name())
-		if strings.ToUpper(filenameWithoutExtension(file.Name())[0:3]) == "FAC" {
+		if len(filenameWithoutExtension(file.Name())) >= 3 && strings.ToUpper(filenameWithoutExtension(file.Name())[0:3]) == "FAC" {
 			err = rename(HOMEPATH+nameFolder+"/"+file.Name(), HOMEPATH+nameFolder+"/"+fmt.Sprintf("%s%s%s", PREFIX, nameFolder, path.Ext(file.Name())))
 		} else {
 			c++
